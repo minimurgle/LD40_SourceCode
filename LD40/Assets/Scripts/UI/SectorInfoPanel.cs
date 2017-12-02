@@ -24,11 +24,6 @@ public class SectorInfoPanel : MonoBehaviour {
     public Text warningText;
 
 
-    public void Start()
-    {
-        
-    }
-
     public void OpenInfoPanel()
     {
         sectorinfo = selectsector.selectedSector.GetComponent<SectorInfo>();
@@ -40,9 +35,7 @@ public class SectorInfoPanel : MonoBehaviour {
     {
         if (selectsector.selectedSector == null)
         {
-            warningText.gameObject.SetActive(true);
-            warningText.text = "Something happened";
-            StartCoroutine(Wait());
+            //don nothing
         }
         else
         {

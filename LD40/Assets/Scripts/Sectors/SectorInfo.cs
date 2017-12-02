@@ -7,6 +7,7 @@ public class SectorInfo : MonoBehaviour
     public int crimeLevel;
     public int crimeRate;
     public int incomePerTurn;
+    public bool sectorLost;
 
 
     public int selectedAction;
@@ -34,6 +35,11 @@ public class SectorInfo : MonoBehaviour
     public void UpdateSector()
     {
         crimeLevel += crimeRate;
+        incomePerTurn -= crimeLevel;
         manager.GetComponent<PlayerMoney>().totalMoney += incomePerTurn;
+        if (crimeLevel >= 100)
+        {
+            sectorLost = true;
+        }
     }
 }

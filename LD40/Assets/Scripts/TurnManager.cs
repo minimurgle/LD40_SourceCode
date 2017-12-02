@@ -15,16 +15,21 @@ public class TurnManager : MonoBehaviour {
 
     public SelectSector selectSector;
 
-
+    public GameObject sectorInfoPanel;
 
 	public void EndTurn()
     {
-        currentTurn += 1;
-        foreach (GameObject sector in sectors)
+        
+
+        if (sectorInfoPanel.activeInHierarchy == false)
         {
-            sector.GetComponent<SectorInfo>().UpdateSector();
+            currentTurn += 1;
+            foreach (GameObject sector in sectors)
+            {
+                sector.GetComponent<SectorInfo>().UpdateSector();
+            }
+            infoPanel.SetInfo();
         }
-        infoPanel.SetInfo();
     }
 
 
