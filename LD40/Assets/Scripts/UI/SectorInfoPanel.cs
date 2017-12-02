@@ -11,6 +11,7 @@ public class SectorInfoPanel : MonoBehaviour {
     public Text crimeRateText;
     public Text crimeLevelText;
     public Text incomeText;
+    public Dropdown actionDropdown;
 
     [Space(2)]
 
@@ -35,7 +36,7 @@ public class SectorInfoPanel : MonoBehaviour {
     {
         if (selectsector.selectedSector == null)
         {
-            //don nothing
+            //do nothing
         }
         else
         {
@@ -43,6 +44,7 @@ public class SectorInfoPanel : MonoBehaviour {
             crimeRateText.text = sectorinfo.crimeRate.ToString();
             crimeLevelText.text = sectorinfo.crimeLevel.ToString();
             incomeText.text = sectorinfo.incomePerTurn.ToString();
+            actionDropdown.value = sectorinfo.selectedAction;
         }
 
     }
@@ -50,6 +52,11 @@ public class SectorInfoPanel : MonoBehaviour {
     public void ClosePanel()
     {
         infoPanel.SetActive(false);
+    }
+
+    public void ChooseAction()
+    {
+        sectorinfo.selectedAction = actionDropdown.value;
     }
 
     public IEnumerator Wait()

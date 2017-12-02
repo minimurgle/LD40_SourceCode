@@ -22,14 +22,27 @@ public class SectorInfo : MonoBehaviour
         manager = GameObject.Find("Manager");
         manager.GetComponent<TurnManager>().sectors.Add(gameObject);
 
-        crimeLevel = Random.Range(0, 15);
-        crimeRate = Random.Range(1, 15);
-        incomePerTurn = Random.Range(100, 500);
+        crimeLevel = Random.Range(0, 20);
+        crimeRate = Random.Range(5, 20);
+        incomePerTurn = Random.Range(50, 250);
     }
 
-    public void Action()
+    public void DoAction()
     {
-        
+      if (selectedAction == 0)
+        {
+            //Do nothing
+        }
+      else if (selectedAction == 1)
+        {
+            crimeLevel += Random.Range(0, 25);
+            manager.GetComponent<PlayerMoney>().totalMoney += Random.Range(100, 300);
+        }
+      else if (selectedAction == 2)
+        {
+            crimeLevel -= Random.Range(0, 20);
+            manager.GetComponent<PlayerMoney>().totalMoney -= Random.Range(100, 400);
+        }
     }
 
     public void UpdateSector()
@@ -41,5 +54,7 @@ public class SectorInfo : MonoBehaviour
         {
             sectorLost = true;
         }
+        DoAction();
+        selectedAction = 0;
     }
 }
