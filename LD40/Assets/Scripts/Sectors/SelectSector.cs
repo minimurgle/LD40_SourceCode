@@ -10,22 +10,18 @@ public class SelectSector : MonoBehaviour {
     void Update () {
 		if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Click");
             CastRayToClick();
         }
 	}
 
-    void CastRayToClick()
+    public void CastRayToClick()
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit) && hit.collider.tag == "Sector")
+        if (Physics.Raycast(ray, out hit) && hit.collider.tag == "Sector" && infoPanel.activeInHierarchy != true)
         {
-            Debug.Log(hit.collider.gameObject.name);
             selectedSector = hit.collider.gameObject;
             infoPanel.GetComponent<SectorInfoPanel>().OpenInfoPanel();
         }
     }
-
-    
 }
