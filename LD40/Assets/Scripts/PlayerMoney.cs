@@ -15,6 +15,7 @@ public class PlayerMoney : MonoBehaviour {
 
         if (totalMoney <= 0)
         {
+            totalMoney = 0;
             gameOver.gameObject.SetActive(true);
             //Submit score here maybe?
         }

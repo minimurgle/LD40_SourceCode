@@ -57,6 +57,7 @@ public class SectorInfoPanel : MonoBehaviour {
     public void ChooseAction()
     {
         sectorinfo.selectedAction = actionDropdown.value;
+        
     }
 
     public IEnumerator Wait()

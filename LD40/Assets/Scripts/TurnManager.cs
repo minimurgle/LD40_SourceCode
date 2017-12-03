@@ -17,10 +17,10 @@ public class TurnManager : MonoBehaviour {
 
     public GameObject sectorInfoPanel;
 
+    public PowerAndAproval powAndAprov;
+
 	public void EndTurn()
     {
-        
-
         if (sectorInfoPanel.activeInHierarchy == false)
         {
             currentTurn += 1;
@@ -29,6 +29,7 @@ public class TurnManager : MonoBehaviour {
                 sector.GetComponent<SectorInfo>().UpdateSector();
             }
             infoPanel.SetInfo();
+            powAndAprov.UpdatePowerAndAproval();
         }
     }
 

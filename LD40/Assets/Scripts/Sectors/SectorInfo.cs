@@ -8,6 +8,7 @@ public class SectorInfo : MonoBehaviour
     public int crimeRate;
     public int incomePerTurn;
     public bool sectorLost;
+    public int policePresence = 10;
 
 
     public int selectedAction;
@@ -31,17 +32,24 @@ public class SectorInfo : MonoBehaviour
     {
       if (selectedAction == 0)
         {
-            //Do nothing
+            if (Random.Range(0, 100) <= 40)
+            {
+                crimeRate += Random.Range(1, 5);
+            }
         }
       else if (selectedAction == 1)
         {
-            crimeLevel += Random.Range(0, 25);
+            crimeLevel += Random.Range(10, 25);
             manager.GetComponent<PlayerMoney>().totalMoney += Random.Range(100, 300);
         }
       else if (selectedAction == 2)
         {
-            crimeLevel -= Random.Range(0, 20);
+            crimeLevel -= Random.Range(10, 25);
             manager.GetComponent<PlayerMoney>().totalMoney -= Random.Range(100, 400);
+            if (Random.Range(0, 100) <= 40)
+            {
+                crimeRate -= Random.Range(1, 5);
+            }
         }
     }
 
